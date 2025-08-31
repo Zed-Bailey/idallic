@@ -54,7 +54,7 @@ export const DynamicNode = (props: NodeProps<DynamicNode>) => {
 
         if (canMake) {
           context.createResource(
-            Object.fromEntries(requirements),
+            Object.fromEntries(requirements) as Record<string, number>,
             nodeData.productionPerTick * nodeData.level,
             getOutputNameForNode(nodeData),
             nodeData.name
@@ -112,7 +112,7 @@ export const DynamicNode = (props: NodeProps<DynamicNode>) => {
 
       <div className={cx("outputs")}>
         {nodeData.output &&
-          Object.entries(nodeData.output).map(([item, value]) => {
+          Object.entries(nodeData.output).map(([item]) => {
             return (
               <Handle
                 position={Position.Bottom}

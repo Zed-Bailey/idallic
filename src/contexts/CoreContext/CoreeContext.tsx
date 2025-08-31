@@ -228,6 +228,7 @@ export const CoreContextProvider = ({ children }: React.PropsWithChildren) => {
   return <CoreContext value={core}>{children}</CoreContext>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCoreContext = () => {
   const context = useContext(CoreContext);
   if (!context) {

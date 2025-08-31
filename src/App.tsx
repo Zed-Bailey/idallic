@@ -1,8 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  useCoreContext,
-  type Resource,
-} from "./contexts/CoreContext/CoreeContext";
+import { useCoreContext } from "./contexts/CoreContext/CoreeContext";
 import styles from "./App.module.scss";
 import classNames from "classnames/bind";
 import {
@@ -13,6 +10,11 @@ import {
   BackgroundVariant,
   ReactFlow,
   useReactFlow,
+  type Edge,
+  type Node,
+  type OnConnect,
+  type OnEdgesChange,
+  type OnNodesChange,
   type ReactFlowJsonObject,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
@@ -57,20 +59,20 @@ function App() {
   const context = useCoreContext();
   const [loading, setLoading] = useState(true);
 
-  const [nodes, setNodes] = useState<typeof initialNodes>();
-  const [edges, setEdges] = useState<typeof initialEdges>();
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
 
-  const onNodesChange = useCallback(
+  const onNodesChange: OnNodesChange = useCallback(
     (changes) =>
       setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
     []
   );
-  const onEdgesChange = useCallback(
+  const onEdgesChange: OnEdgesChange = useCallback(
     (changes) =>
       setEdges((edgesSnapshot) => applyEdgeChanges(changes, edgesSnapshot)),
     []
   );
-  const onConnect = useCallback(
+  const onConnect: OnConnect = useCallback(
     (params) => setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot)),
     []
   );
