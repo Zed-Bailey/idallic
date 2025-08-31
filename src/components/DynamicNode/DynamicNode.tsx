@@ -91,7 +91,7 @@ export const DynamicNode = (props: NodeProps<DynamicNode>) => {
                 id={input[0]}
                 key={input[0]}
                 label={input[0]}
-                onChange={(e: ProducerConsumerNode[]) => {
+                onChange={(e) => {
                   setConsumerState(
                     Object.fromEntries(
                       e.map((item) => {

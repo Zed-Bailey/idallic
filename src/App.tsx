@@ -204,7 +204,7 @@ const SideBar = () => {
             <li key={name}>
               <button
                 onClick={() => {
-                  coreContext.buy(name, itemRecipe.cost);
+                  coreContext.buy(itemRecipe.cost);
                   reactFlow.addNodes(createNewNode(name));
                 }}
                 disabled={coreContext.coins < itemRecipe.cost}

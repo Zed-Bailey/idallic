@@ -201,7 +201,7 @@ function useCore() {
     setCoins((p) => p + costPerUnit * amount);
   }
 
-  function buy(name: ResourceName, cost: number) {
+  function buy(cost: number) {
     setCoins((p) => {
       return p - cost;
     });

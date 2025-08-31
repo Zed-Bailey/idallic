@@ -7,9 +7,18 @@ import {
 import { useEffect } from "react";
 import styles from "./CustomHandle.module.scss";
 import classNames from "classnames/bind";
+import type { ProducerConsumerNode } from "../../lib/recipes";
 const cx = classNames.bind(styles);
 
-export function CustomHandle({ id, label, onChange }) {
+export function CustomHandle({
+  id,
+  label,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  onChange: (e: ProducerConsumerNode[]) => void;
+}) {
   const connections = useNodeConnections({
     handleType: "target",
   });
@@ -17,11 +26,11 @@ export function CustomHandle({ id, label, onChange }) {
   const nodeData = useNodesData(connections.map((c) => c.source));
 
   useEffect(() => {
-    onChange(nodeData?.map((e) => e.data?.node));
+    onChange(nodeData?.map((e) => e.data?.node) as ProducerConsumerNode[]);
   }, []);
 
   useEffect(() => {
-    onChange(nodeData?.map((e) => e.data?.node));
+    onChange(nodeData?.map((e) => e.data?.node) as ProducerConsumerNode[]);
   }, [nodeData]);
 
   return (
