@@ -1,0 +1,14 @@
+.dynamicNode {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.outputs,
+.inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
